@@ -25,7 +25,6 @@ export const Navbar = () => {
   return (
     <NavbarWrapper>
       <Logo />
-      {console.log(active)}
       <StyledFontAwesomeIcon icon={faBars} onClick={() => setActive(!active)} />
       <NavLinkWrapper active={active}>
         {link.map((link) => (
