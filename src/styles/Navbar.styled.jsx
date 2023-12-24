@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const LogoImg = styled.img`
   align-self: start;
-  width: 150px;
+  width: 50px;
 `;
 
 const NavbarWrapper = styled.nav`
@@ -27,6 +27,7 @@ const NavLinkWrapper = styled.div`
     padding: 2rem 0;
   }
 `;
+
 
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;

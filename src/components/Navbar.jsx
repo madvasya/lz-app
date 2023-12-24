@@ -11,16 +11,11 @@ export const Navbar = () => {
   const [active, setActive] = useState(false);
   const link = [
     {
-      page: "Home",
+      page: "Новости",
       href: "/",
     },
-    { page: "About", href: "/about" },
-    { page: "Blog", href: "/blog" },
-    {
-      page: "Services",
-      href: "/services",
-    },
-    { page: "Sign Up", href: "/sign-up" },
+    { page: "О Лаборатории Звука", href: "/about" },
+    { page: "Войти", href: "/login" },
   ];
   return (
     <NavbarWrapper>
