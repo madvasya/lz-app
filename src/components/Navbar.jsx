@@ -15,11 +15,19 @@ export const Navbar = () => {
       href: "/",
     },
     { page: "О Лаборатории Звука", href: "/about" },
+    { page: "Правила репбазы", href: "/rules" },
     { page: "Войти", href: "/login" },
   ];
   return (
     <NavbarWrapper>
       <Logo />
+      <NavLinkWrapper active={active}>
+          <StyledNavLink
+            to="/booking"
+          >
+            Забронировать репетицию
+          </StyledNavLink>
+      </NavLinkWrapper>
       <StyledFontAwesomeIcon icon={faBars} onClick={() => setActive(!active)} />
       <NavLinkWrapper active={active}>
         {link.map((link) => (

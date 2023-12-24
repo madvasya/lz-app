@@ -6,10 +6,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
-const Image = styled.img`
-  width: 70%;
-  height: auto;
-`;
 
 const LoginContainer = styled.div`
   width: 90%;
@@ -25,15 +21,6 @@ const LoginContainer = styled.div`
   }
 `;
 
-const ImageContainer = styled.div`
-  flex: 1;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
 const FormContainer = styled.div`
   flex: 1;
   display: flex;
@@ -43,8 +30,7 @@ const FormContainer = styled.div`
   align-items: center;
   justify-content: center;
   padding: 16px;
-  margin-right: 30px;
-  box-shadow: 2px 2px 10px #888888;
+  margin-left: 2rem;
 
   @media (max-width: 768px) {
     margin: 0;
@@ -86,10 +72,10 @@ const LoginButton = styled.button`
   margin-top: 30px;
   border: none;
   border-radius: 4px;
-  background-color: #1575a7;
+  background-color: #007dfc;
   cursor: pointer;
   &:hover {
-    background-color: #1885c0;
+    background-color: #007dfc;
   }
 `;
 const CheckBox = styled.input.attrs({ type: "checkbox" })`
@@ -104,7 +90,7 @@ const Paragraph = styled.p`
 `;
 
 const Anchor = styled.a`
-  color: #f78719;
+  color: #007dfc;
   text-decoration: underline;
   &:hover {
     cursor: pointer;
@@ -120,26 +106,23 @@ const Anchor = styled.a`
 const Login = () => {
   return (
     <LoginContainer>
-      <ImageContainer>
-        <Image src="assets/vector.svg" alt="Login screen image" />
-      </ImageContainer>
       <FormContainer>
-        <Heading>Login</Heading>
+        <Heading>Вход</Heading>
         <LoginForm>
           <Label>Логин</Label>
-          <Input type="text" placeholder="Enter Login ID" />
+          <Input type="text" placeholder="Логин" />
           <Label>Пароль</Label>
-          <Input type="password" placeholder="Enter Password" />
+          <Input type="password" placeholder="Пароль" />
           <Container>
             <Label>
               <CheckBox name="remember" value="remember" />
-              Remember me
+              Запомнить меня
             </Label>
             <Anchor noLine>Изменить пароль</Anchor>
           </Container>
           <Label>
             <CheckBox name="role" value="admin" />
-            Agree to <Anchor>Правилами Репбазы</Anchor>
+            Согласен с <Anchor>Правилами Репбазы</Anchor>
           </Label>
           <LoginButton>Войти</LoginButton>
         </LoginForm>
