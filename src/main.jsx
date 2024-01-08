@@ -6,7 +6,7 @@ import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Rules } from "./pages/Rules";
 import Login from "./pages/Login";
-import Booking from "./pages/Booking";
+import { Booking } from "./pages/Booking";
 const router = createBrowserRouter([
   {
     path: "/",

@@ -1,60 +1,66 @@
+// Booking.jsx - страница бронирования репетиций
+import React from 'react';
+import { axiosInstance } from '../components/Api';
 import { useState } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
-import styled from "styled-components";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { registerLocale } from "react-datepicker";
+import ru from 'date-fns/locale/ru';
+import setHours from "date-fns/setHours";
+import setMinutes from "date-fns/setMinutes";
+registerLocale('ru', ru);
+import {
+  BookingContainer,
+  BookingButton,
+} from "../styles/Booking.styled";
+import dayjs from "dayjs";
 
-const disabledDates = [30, 1, 3];
+export const Booking = () => {
+    const [startDate, setStartDate] = useState(
+        setHours(setMinutes(new Date(), 30), 17),
+      );
 
-function tileDisabled({ date, view }) {
-  // Disable tiles in month view only
-  if (view === 'month') {
-    // Check if a date React-Calendar wants to check is on the list of disabled dates
-    return disabledDates.find(dDate => true);
-  }
-}
+    const config = {
+        headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDcyMjkxNjcsImlhdCI6MTcwNDYzNzE2NywidXNlciI6eyJpZCI6IjIiLCJpc2FkbWluIjpmYWxzZSwidXNlcm5hbWUiOiJwYXZlbCJ9fQ.ON6_32832r3LKdSA44Vttgs9NvOu-5849zDt3vFWBGo` }
+    };
 
-const BookingContainer = styled.div`
-  width: 90%;
-  height: 90%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  padding: 0.5rem 1rem;
+    function bookingRequest() {
+        axiosInstance.post('/api/schedule', {
+          time: dayjs(startDate).unix(),
+          blocked: false
+        }, config)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      }
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    height: 95%;
-  }
-`;
-
-const TextLabel = styled.div`
-  width: 90%;
-  height: 90%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  padding: 0.5rem 1rem;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    height: 95%;
-  }
-`;
-
-export default function Booking() {
-  const [value, onChange] = useState(new Date());
-
-  return (
-    
-    <BookingContainer>
-        <Calendar onChange={onChange} showWeekNumbers value={value} />
-        <TextLabel>
-            <h3>Выберите желаемое время для бронирования</h3>
-        </TextLabel>
-    </BookingContainer>
-  );
+    return (
+        <div>
+            <BookingContainer>
+            <h2>Выберите дату репетиции</h2>
+            </BookingContainer>
+            
+            <BookingContainer>
+                <DatePicker
+                    locale="ru"
+                    showTimeSelect
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    timeFormat="p"
+                    dateFormat="Pp"
+                    inline
+                    minTime={setHours(setMinutes(new Date(), 0), 10)}
+                    maxTime={setHours(setMinutes(new Date(), 30), 20)}
+                    timeIntervals={60}
+                />
+            </BookingContainer>
+            <BookingContainer>
+              <h3>{dayjs(startDate).format('DD/MM/YYYY HH:mm')}</h3>
+              <BookingButton onClick={bookingRequest}>Забронировать</BookingButton>
+            </BookingContainer>   
+        </div>
+    );
 }

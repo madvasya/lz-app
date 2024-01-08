@@ -1,8 +1,11 @@
 import React from "react";
 import { LogoImg } from "../styles/Navbar.styled";
 import logo from "../assets/logo.svg";
+import { Link } from "react-router-dom";
 export const Logo = () => {
   return (
-    <LogoImg src={logo} alt="logo" />
+    <Link to="/">
+      <LogoImg src={logo} alt="logo" />
+    </Link>
   );
 };

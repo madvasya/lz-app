@@ -1,3 +1,4 @@
+// Navbar.styled.jsx - описание стиля навигационной панели
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
@@ -28,23 +29,11 @@ const NavLinkWrapper = styled.div`
   }
 `;
 
-
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   transition: 0.2s;
   color: white;
   margin-left: 2rem;
-  &:last-child {
-    background: #007dfc;
-    padding: 0.5rem 1rem;
-    border-radius: 30px;
-    &:hover {
-      color: white;
-    }
-    &.${(props) => props.activeclassname} {
-      color: white;
-    }
-  }
 
   &.${(props) => props.activeclassname} {
     color: #007dfc;
@@ -52,6 +41,27 @@ const StyledNavLink = styled(NavLink)`
 
   &:hover {
     color: #007dfc;
+  }
+
+  @media (max-width: 704px) {
+    display: block;
+    margin: 2rem auto;
+  }
+`;
+
+const StyledNavButton = styled(NavLink)`
+  text-decoration: none;
+  transition: 0.2s;
+  color: white;
+  margin-left: 2rem;
+  background: #007dfc;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  &:hover {
+    color: white;
+  }
+  &.${(props) => props.activeclassname} {
+    color: white;
   }
 
   @media (max-width: 704px) {
@@ -79,5 +89,6 @@ export {
   NavbarWrapper,
   NavLinkWrapper,
   StyledNavLink,
+  StyledNavButton,
   StyledFontAwesomeIcon,
 };
