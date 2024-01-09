@@ -1,6 +1,6 @@
 // Booking.jsx - страница бронирования репетиций
 import React from 'react';
-import { axiosInstance } from '../components/Api';
+import axios from "axios";
 import { useState } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -20,20 +20,16 @@ export const Booking = () => {
         setHours(setMinutes(new Date(), 30), 17),
       );
 
-    const config = {
-        headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDcyMjkxNjcsImlhdCI6MTcwNDYzNzE2NywidXNlciI6eyJpZCI6IjIiLCJpc2FkbWluIjpmYWxzZSwidXNlcm5hbWUiOiJwYXZlbCJ9fQ.ON6_32832r3LKdSA44Vttgs9NvOu-5849zDt3vFWBGo` }
-    };
-
     function bookingRequest() {
-        axiosInstance.post('/api/schedule', {
+        axios.post('/api/schedule', {
           time: dayjs(startDate).unix(),
           blocked: false
-        }, config)
+        })
         .then(function (response) {
           console.log(response);
         })
         .catch(function (error) {
-          console.log(error);
+          alert(error + "\nвсе упало тильт :(");
         });
       }
 

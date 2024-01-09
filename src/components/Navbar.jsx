@@ -9,6 +9,8 @@ import {
   StyledFontAwesomeIcon,
 } from "../styles/Navbar.styled";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { useAuth } from "../provider/AuthProvider";
+
 export const Navbar = () => {
   const [active, setActive] = useState(false);
   const link = [
@@ -16,6 +18,7 @@ export const Navbar = () => {
     { page: "О Лаборатории Звука", href: "/about" },
     { page: "Правила репбазы", href: "/rules" },
   ];
+  const { token } = useAuth();
   return (
     <NavbarWrapper>
       <Logo />
@@ -31,7 +34,10 @@ export const Navbar = () => {
             {link.page}
           </StyledNavLink>
         ))}
-        <StyledNavButton to="/login">Войти</StyledNavButton>
+        {!token ? 
+          <StyledNavButton to="/login">Вход</StyledNavButton> : 
+          <StyledNavButton to="/logout">Выход</StyledNavButton>
+        }
       </NavLinkWrapper>
     </NavbarWrapper>
   );
