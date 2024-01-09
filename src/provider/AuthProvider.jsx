@@ -1,6 +1,9 @@
 import axios from "axios";
 import { createContext, useContext, useMemo, useReducer } from "react";
 
+axios.defaults.headers.common["ngrok-skip-browser-warning"] = "ura";
+axios.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("token");
+
 // Create the authentication context
 const AuthContext = createContext();
 

@@ -15,14 +15,14 @@ const NavbarWrapper = styled.nav`
   background: #000;
   padding: 1rem 3rem;
   position: relative;
-  @media (max-width: 704px) {
+  @media (max-width: 970px) {
     flex-direction: column;
     padding: 1rem;
   }
 `;
 
 const NavLinkWrapper = styled.div`
-  @media (max-width: 704px) {
+  @media (max-width: 970px) {
     display: ${(props) => (props.active ? "block" : "none")};
     text-align: center;
     padding: 2rem 0;
@@ -43,7 +43,7 @@ const StyledNavLink = styled(NavLink)`
     color: #007dfc;
   }
 
-  @media (max-width: 704px) {
+  @media (max-width: 970px) {
     display: block;
     margin: 2rem auto;
   }
@@ -64,7 +64,7 @@ const StyledNavButton = styled(NavLink)`
     color: white;
   }
 
-  @media (max-width: 704px) {
+  @media (max-width: 970px) {
     display: block;
     margin: 2rem auto;
   }
@@ -78,7 +78,7 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   color: white;
   font-size: 1.8rem;
   cursor: pointer;
-  @media (max-width: 704px){
+  @media (max-width: 970px){
     display: block;
   }
   };
